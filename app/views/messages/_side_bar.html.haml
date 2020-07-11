@@ -4,13 +4,16 @@
       .Side-box__name 
         = current_user.name
       .Side-box__icons 
-        = link_to "#" do
+        = link_to new_group_path do
           = icon('far', 'edit')
       .Side-box__icon
         = link_to edit_user_path(current_user) do
           = icon('fas', 'cog')
   .Side-bar__group-list
-    .Sid-bar__box
-      = link_to "#", class: "box" do
-        .Side-bar__box__name techcamp
-        .Side-bar__box__text まだメッセージがありません
+    - current_user.groups.each do |group|
+      .Sid-bar__box
+        = link_to "#", class: "box" do
+          .Side-bar__box__name 
+            = group.name
+          .Side-bar__box__text 
+            まだメッセージがありません
