@@ -1,11 +1,10 @@
-.Chat-main__massage-list
-    .chat-box
-      .chat-box__top   
-        = message.user.name
-      .chat-name 
-        = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-      .chat-box__message 
-        - if message.content.present?
-          %p.Message__content
-            = message.content
-        = image_tag message.image.url, class: 'Message__image' if message.image.present?
+.chat-box{data: {message: {id: message.id}}}
+  .chat-box__top
+    = message.user.name
+  .chat-name 
+    = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .chat-box__message 
+    - if message.content.present?
+      %p.Message__content
+        = message.content
+    = image_tag message.image.url, class: 'Message__image' if message.image.present?

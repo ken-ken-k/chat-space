@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       let html = 
-      `<div class="chat-box">
+      `<div class="chat-box" data-message-id=${message.id}>
         <div class="chat-box__top">
           <div class="chat-name">
             ${message.user_name}
@@ -18,7 +18,7 @@ $(function(){
       return html;
     } else {
       let html = 
-      `<div class="chat-box">
+      `<div class="chat-box" data-message-id=${message.id}>
         <div class="chat-box__top">
           <div class="chat-name">
             ${message.user_name}
@@ -51,11 +51,12 @@ $(function(){
       let html = buildHTML(data);
       $('.Chat-main__massage-list').append(html);      
       $('form')[0].reset();
-      $('.Chat-main__massage-list').animate({ scrollTop: $('.Form')[0].scrollHeight});
+      $('.Chat-main__massage-list').animate({ scrollTop: $('.Chat-main__massage-list')[0].scrollHeight});
       $('.Form__submitBtn').prop('disabled', false);
     })
     .fail(function(){
       alert("エラーです")
-    })
+      $('.Form__submitBtn').prop('disabled', false);
+    });
   });
 });

@@ -12,17 +12,8 @@
         edit
           
   .Chat-main__massage-list
-    .chat-box
-      .chat-box__top
-        .chat-name masa
-        .chat-date 2020/07/09(Thu) 15:46:09
-      .chat-box__message おはよう！
-        
-    .chat-box
-      .chat-box__top
-        .chat-name masa
-        .chat-date 2020/07/09(Thu) 17:46:09
-      .chat-box__message 今日は夜から雨
+    = render @messages
+
 
   .Chat-main__message-form
     = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
